@@ -1,0 +1,45 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; font-size: 1rem; line-height: 1.6; }
+.page {
+display: grid;
+gap: 1rem;
+padding: 1rem;
+grid-template-columns: 1fr; /* mobile: one column */
+grid-template-areas:
+"header"
+"main"
+"sidebar"
+"footer";
+}
+.header { grid-area: header; background: #5B2A86; color: white; padding: 1.5rem; }
+.sidebar { grid-area: sidebar; background: #F6F0FA; padding: 1rem; }
+.gallery { grid-area: main; }
+.footer { grid-area: footer; background: #333; color: white; padding: 1rem; }
+.header h1 { font-size: 6vw; } /* grows with the screen */
+.gallery {
+display: grid;
+gap: 1rem;
+grid-template-columns: 1fr; /* mobile: 1 column */
+}
+.card {
+background: #F26B21; color: white;
+padding: 2em; border-radius: 0.5rem;
+min-height: 10rem;
+}
+.card h3 { font-size: 1.5rem; }
+@media (min-width: 601px) {
+.gallery { grid-template-columns: repeat(2, 1fr); }
+.header h1 { font-size: 3rem; }
+}
+/* Desktop: 993px and above */
+@media (min-width: 993px) {
+.page {
+grid-template-columns: 15rem 1fr; /* sidebar + main */
+grid-template-areas:
+"header header"
+"sidebar main"
+"footer footer";
+}
+.gallery { grid-template-columns: repeat(3, 1fr); }
+.featured { grid-column: span 2; } /* first card is wider */
+}
